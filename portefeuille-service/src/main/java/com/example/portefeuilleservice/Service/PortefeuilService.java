@@ -14,4 +14,5 @@ public interface PortefeuilService {
     public Optional<Portefeuil> findPortefeuilByReference(String ref);
     Optional<Portefeuil> findPortefeuilByProprietaire(String proprietaire);
 
+    String findReferenceOfPortefeuilByProprietaire(String proprietaire);
 }

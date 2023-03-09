@@ -106,4 +106,9 @@ public class PortefeuilServiceImpl implements PortefeuilService {
     public Optional<Portefeuil> findPortefeuilByProprietaire(String proprietaire) {
         return portefeuilRepository.findPortefeuilByProprietaire(proprietaire);
     }
+
+    @Override
+    public String findReferenceOfPortefeuilByProprietaire(String proprietaire) {
+        return portefeuilRepository.findPortefeuilByProprietaire(proprietaire).get().getReference();
+    }
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@FeignClient(name = "Portefeuille-MicroService"  )
+@FeignClient(name = "Portefeuille-MicroService" )
 public interface PortefeuilRequiredRest {
 
     @GetMapping("/Management/portefeuil/{ref}")

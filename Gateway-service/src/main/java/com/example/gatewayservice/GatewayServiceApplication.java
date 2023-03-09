@@ -33,21 +33,19 @@ public class GatewayServiceApplication {
         SpringApplication.run(GatewayServiceApplication.class, args
 
         );
-        System.out.println( AuthFilter.VALUE_KEY.toLowerCase(Locale.ROOT));
+
 
     }
-    @Autowired
-    AuthFilter filter;
     @Bean
     public RouteLocator gatewayRouter(RouteLocatorBuilder builder  ) {
 
 
         return builder.routes()
 
-               // .route(p -> p.path("/Management/User/**").filters(f->f.filter(new AuthFilter().apply(new AuthFilter.Config()))).uri("lb://Authentification-MicroService"))
+                .route(p -> p.path("/Management/User/**")/*.filters(f->f.addRequestHeader("AUTHORIZATION",
+                        "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoaWJhZWxhYWxhbWkyODYiLCJyb2xlcyI6WyJhbGwiXSwiaXNzIjoiaHR0cDovL2hvc3QuZG9ja2VyLmludGVybmFsOjgwODMvTWFuYWdlbWVudC9Vc2VyL2xvZ2luIiwiZXhwIjoxNjc2ODk4OTU0fQ.OTtt46daYSplH5SMRs7SxUyfNGC8gAUaFdDVvDSBGX8"))*/.uri("lb://Authentification-MicroService"))
 
                 .route(p -> p.path("/Management/portefeuil/**").uri("lb://Portefeuille-MicroService"))
-                .route(p -> p.path("/Management/User/**").uri("lb://Authentification-MicroService"))
                 .route(p -> p.path("/**").uri("lb://Management-operation-service"))
                 .build();
     }

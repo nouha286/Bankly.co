@@ -27,6 +27,12 @@ public class PortefeuilController {
         return portefeuilService.findPortefeuilByProprietaire(proprietaire);
     }
 
+    @GetMapping("findReferenceOfPortefeuilByProprietaire/{proprietaire}")
+    @ResponseBody
+    public String findReferenceOfPortefeuilByProprietaire(@PathVariable("proprietaire") String proprietaire) {
+        return portefeuilService.findReferenceOfPortefeuilByProprietaire(proprietaire);
+    }
+
     @GetMapping("/{ref}")
     @ResponseBody
     public Optional<Portefeuil>findPortefeuilByReference(@PathVariable("ref") String ref) {

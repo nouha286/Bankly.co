@@ -27,10 +27,17 @@ public class UserController {
 
     @PostMapping("/passerMesOperations")
     public Operation passerOperation(@RequestBody Operation operation, Principal principal) {
+
         Optional<Portefeuil> portefeuil=portefeuilRequiredRest.findPortefeuilByProprietaire(principal.getName());
         System.out.println(principal.getName());
-        System.out.println(portefeuil);
+
         return userService.passerOperation(operation, portefeuil.get().getReference());
+    }
+    @GetMapping("/getEmailOfUserConnected")
+    public Optional<User> getEmailOfUserConnected( Principal principal)
+    {
+        Optional<User> user=userService.findUserByEmail(principal.getName());
+        return user;
     }
 
 

@@ -5,6 +5,7 @@ import com.example.demo.Service.OperationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -14,6 +15,13 @@ public class OperationController {
     public Optional<Operation> findOperationByPortefeuil(@PathVariable("portefeuil") String portefeuil) {
         return operationService.findOperationByPortefeuil(portefeuil);
     }
+
+    @GetMapping("MyOperations/{portefeuil}")
+    public List<Operation> findOperationsByPortefeuil(@PathVariable("portefeuil") String portefeuil) {
+        return operationService.findOperationsByPortefeuil(portefeuil);
+    }
+
+
 
     @Autowired
     OperationService operationService;

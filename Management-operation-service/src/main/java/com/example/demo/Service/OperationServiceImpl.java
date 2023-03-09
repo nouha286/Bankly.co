@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -62,5 +63,10 @@ public class OperationServiceImpl implements OperationService {
     @Override
     public Optional<Operation> findOperationByPortefeuil(String portefeuil) {
         return operationRepository.findOperationByPortefeuil(portefeuil);
+    }
+
+    @Override
+    public List<Operation> findOperationsByPortefeuil(String portefeuil) {
+        return operationRepository.findOperationsByPortefeuil(portefeuil);
     }
 }

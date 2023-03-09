@@ -1,5 +1,8 @@
 package com.example.portefeuilleservice.DTO;
 
+import lombok.Data;
+
+@Data
 public class Proprietaire {
     private Long id;
     private String firstName;

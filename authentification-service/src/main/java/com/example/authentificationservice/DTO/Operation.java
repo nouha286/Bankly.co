@@ -10,4 +10,5 @@ public class Operation {
     private String portefeuil;
     private Double montant;
     private LocalDate date;
+    private String message;
 }

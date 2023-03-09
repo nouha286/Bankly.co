@@ -12,4 +12,6 @@ public interface PortefeuilRepository extends JpaRepository<Portefeuil,Long>
    Optional<Portefeuil> findPortefeuilByReference(String ref);
 
    Optional<Portefeuil> findPortefeuilByProprietaire(String proprietaire);
+
+
 }

@@ -3,6 +3,7 @@ package com.example.authentificationservice.security;
 
 
 import com.example.authentificationservice.filter.CustomAuthenticationFilter;
+
 import com.example.authentificationservice.filter.CutomAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,19 +41,23 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         CustomAuthenticationFilter customAuthenticationFilter=new CustomAuthenticationFilter(authenticationManagerBean());
-        customAuthenticationFilter.setFilterProcessesUrl("/login");
+       customAuthenticationFilter.setFilterProcessesUrl("/Management/User/login");
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        //  http.authorizeRequests().antMatchers("/**").permitAll();
+       // http.formLogin();
+       //  http.authorizeRequests().antMatchers("/**").permitAll();
+       /* http.authorizeRequests().antMatchers(GET,"/Management/User/{email}").permitAll();
        http.authorizeRequests().antMatchers(POST,"/Management/User/register").permitAll();
-        http.authorizeRequests().antMatchers(POST,"/Management/User/registerAndCreatePortefeuil").permitAll();
-       http.authorizeRequests().antMatchers("/**").authenticated();
-       // http.authorizeRequests().antMatchers("/**").permitAll();
+       http.authorizeRequests().antMatchers(POST,"/Management/User/registerAndCreatePortefeuil").permitAll();
+
+
+       http.authorizeRequests().antMatchers("/**").authenticated();*/
+        http.authorizeRequests().antMatchers("/**").permitAll();
 
 
 
 
-        http.authorizeRequests().anyRequest().authenticated();
+       // http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CutomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
